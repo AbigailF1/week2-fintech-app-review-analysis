@@ -1,23 +1,22 @@
-# Fintech App Review Analysis
+# 📱 Ethiopian Fintech App Review Insights
 
----
-This repository analyzes user reviews of Ethiopian banking apps to uncover sentiment trends and key themes affecting user satisfaction. The workflow includes scraping reviews from the Google Play Store, preprocessing the text, performing sentiment analysis using NLP models, and extracting thematic insights through keyword clustering.
-
----
-
-## Tools & Technologies
-
-- **Python** 🐍
-- **google-play-scraper** – Collect app reviews
-- **pandas** – Data manipulation
-- **transformers** – Sentiment classification (BERT)
-- **scikit-learn** – TF-IDF vectorization
-- **spaCy** – Text preprocessing and lemmatization
-- **matplotlib / seaborn** – (Optional) Data visualization
+This project analyzes user feedback from major Ethiopian banking apps on the Google Play Store. It applies Natural Language Processing (NLP) techniques to extract sentiment and thematic patterns, helping stakeholders understand user pain points and priorities in mobile banking experiences.
 
 ---
 
-## Project Structure
+## 🔧 Tools & Libraries
+
+- **Python 3.10+**
+- `google-play-scraper` – Fetches Google Play reviews
+- `pandas`, `numpy` – Data analysis
+- `transformers` – BERT-based sentiment classification
+- `spaCy` – Lemmatization and text cleaning
+- `scikit-learn` – TF-IDF keyword extraction
+- `matplotlib`, `seaborn` – Optional visualization
+
+---
+
+## 🗂️ Project Structure
 
 ```
 .
@@ -52,67 +51,83 @@ This repository analyzes user reviews of Ethiopian banking apps to uncover senti
 
 ---
 
-## Features
+## 💡 Key Features
 
-- **Scraping Reviews:** Collects real reviews from the Google Play Store for:
-  - Commercial Bank of Ethiopia
-  - Bank of Abyssinia
+- **Bank Coverage:**  
+  Reviews are collected for:
+
+  - Commercial Bank of Ethiopia (CBE)
+  - Bank of Abyssinia (BoA)
   - Dashen Bank
 
-- **Preprocessing:**
-  - Emoji normalization (e.g., "😍" → "love")
-  - Lowercasing, punctuation removal, optional lemmatization
-  - Stopword filtering
+- **Review Preprocessing:**
+
+  - Emoji mapping (e.g., 😡 → "angry")
+  - Lowercasing, punctuation removal
+  - Stopword filtering and lemmatization
 
 - **Sentiment Analysis:**
-  - Uses `distilbert-base-uncased-finetuned-sst-2-english` transformer model
-  - Assigns each review a label: positive or negative
-  - Results saved to `reviews_with_sentiment.csv`
 
-- **Keyword Extraction:**
-  - Identifies top keywords and bigrams per bank using TF-IDF
-  - Saved to `keywords_per_bank.csv`
+  - Uses `distilbert-base-uncased-finetuned-sst-2-english`
+  - Labels each review as **positive** or **negative**
+  - Output saved to `reviews_with_sentiment.csv`
 
-- **Thematic Clustering:**
-  - Groups related keywords into themes such as:
-    - Account Access
-    - App Performance
-    - User Interface
-    - Customer Support
-  - Themes appended to reviews for deeper insight
+- **Keyword & Theme Extraction:**
+  - Top keywords per bank via TF-IDF
+  - Keywords grouped into meaningful themes:
+    - Login & Access Issues
+    - App Reliability
+    - UI/UX Design
+    - Customer Service
 
 ---
 
 ## Getting Started
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/yourusername/fintech-review-analysis.git
    cd fintech-review-analysis
    ```
 
-2. **Set Up the Environment**
+2. **Create a Virtual Environment**
    Create a virtual environment and install dependencies:
+
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
+    python -m venv venv
+    venv\Scripts\activate  # On Windows
+    # source venv/bin/activate  # On macOS/Linux
+    pip install -r requirements.txt
+
    ```
 
-3. **Run the Pipeline**
+3. **Run Pipeline**
    Ensure `cleaned_reviews.csv` exists in the `cleaned_data` folder, then run:
+
    ```bash
-   python sentiment_analysis.py
-   python extract_keywords.py
-   python assign_themes.py
+    # Scrape or use existing review data
+    python task-1/preprocess_reviews.py
+
+    # Apply sentiment analysis
+    python task-2/sentiment_analysis.py
+
+    # Extract keywords and assign themes
+    python task-2/extract_keywords.py
+    python task-2/assign_themes.py
+
    ```
+
    Output files will be generated in the `data/` directory.
 
 ---
 
 ## Insights
 
-This analysis helps fintech stakeholders to:
-- Identify pain points in app performance and reliability
-- Understand what users value (e.g., ease of use, speed)
-- Prioritize feature improvements based on user sentiment
+This analysis helps developers and banks to:
+
+Detect patterns in negative reviews
+
+Identify app-specific issues by theme
+
+Prioritize feature fixes based on real user feedback
