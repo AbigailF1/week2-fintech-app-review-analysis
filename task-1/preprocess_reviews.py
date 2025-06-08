@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime
+from datetime import datetime  
 import os
 
 # Load raw scraped data
@@ -15,7 +15,7 @@ df = df.rename(columns={
 # Add source column
 df["source"] = "Google Play"
 
-# Normalize date format
+# Normalize date formats
 df["date"] = pd.to_datetime(df["date"], errors='coerce')
 df["date"] = df["date"].dt.strftime('%Y-%m-%d')
 
@@ -28,7 +28,7 @@ df = df.drop_duplicates(subset=["review", "bank"])
 # Keep only required columns
 df = df[["review", "rating", "date", "bank", "source"]]
 
-# Save cleaned file
+# Save cleaned file to the directory 
 os.makedirs("cleaned_data", exist_ok=True)
 df.to_csv("cleaned_data/cleaned_reviews.csv", index=False)
 
