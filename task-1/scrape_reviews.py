@@ -12,7 +12,6 @@ apps = {
     "Dashen Bank": "com.dashen.dashensuperapp"
 }
 
-
 def scrape_reviews(app_name, app_id, count=400):
     print(f"Scraping {app_name}...")
     result, _ = reviews(
